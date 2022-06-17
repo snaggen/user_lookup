@@ -1,12 +1,14 @@
 [package]
 name = "async_user_lookup"
 description = "A library to lookup user and groups on Unix/Linux"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Mattias Eriksson <mattias.eriksson@tutanota.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/snaggen/async_user_look"
+repository = "https://github.com/snaggen/async_user_lookup"
+homepage = "https://github.com/snaggen/async_user_lookup"
+keywords = ["user", "group", "passwd"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
