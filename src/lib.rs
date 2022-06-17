@@ -17,7 +17,6 @@
 //!#[tokio::main]
 //!async fn main() {
 //!   let mut reader = PasswdReader::new(Duration::new(0,0));
-//!   let entries = reader.get_entries().await.unwrap();
 //!
 //!   println!("User with uid 1000 is: {}",
 //!   reader.get_username_by_uid(1000).await.unwrap().unwrap());
