@@ -194,10 +194,10 @@ impl PasswdReader {
         Ok(&self.passwd)
     }
 
-    ///Will return an IntoIter to iterate over PasswdEntry
-    pub async fn to_iter(mut self) -> Result<std::vec::IntoIter<PasswdEntry>, std::io::Error> {
+    ///Will return an iterator over &PasswdEntry
+    pub async fn try_iter(&mut self) -> Result<std::slice::Iter<PasswdEntry>, std::io::Error> {
         self.refresh_if_needed().await?;
-        Ok(self.passwd.into_iter())
+        Ok(self.passwd.iter())
     }
 
     ///Look up a PasswdEntry by username
@@ -320,10 +320,10 @@ impl GroupReader {
         Ok(&self.groups)
     }
 
-    ///Will return an IntoIter to iterate over GroupEntry
-    pub async fn to_iter(mut self) -> Result<std::vec::IntoIter<GroupEntry>, std::io::Error> {
+    ///Will return an iterator over &GroupEntry
+    pub async fn try_iter(&mut self) -> Result<std::slice::Iter<GroupEntry>, std::io::Error> {
         self.refresh_if_needed().await?;
-        Ok(self.groups.into_iter())
+        Ok(self.groups.iter())
     }
 
     ///Look up a GroupEntry by the group name
@@ -361,4 +361,19 @@ impl GroupReader {
         self.refresh_if_needed().await?;
         Ok(self.groups.iter().find(|e| e.name == name).map(|e| e.gid))
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::time::Duration;
+    use crate::PasswdReader;
+
+    #[tokio::test]
+    async fn test_iter() {
+        let mut reader = PasswdReader::new_at("test_files/passwd",Duration::new(0,0));
+        let size = reader.try_iter().await.unwrap().count();
+
+        assert_eq!(3, size);
+    }
+
 }
