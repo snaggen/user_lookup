@@ -8,7 +8,7 @@
 [crates-badge]: https://img.shields.io/crates/v/user_lookup
 [crates-url]: https://crates.io/crates/user_lookup
 [docs-badge]: https://img.shields.io/docsrs/user_lookup
-[docs-url]: https://docs.rs/user_lookup/0.2.0/user_lookup
+[docs-url]: https://docs.rs/user_lookup/0.3.0/user_lookup
 
 An easy way to lookup Linux/Unix user and group information from /etc/passwd and /etc/group. It will cache the information for a duration specified by the user. 
 
