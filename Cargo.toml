@@ -11,8 +11,15 @@ homepage = "https://github.com/snaggen/user_lookup"
 keywords = ["user", "group", "passwd"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+default = ["sync", "async"]
+sync = []
+async = ["tokio"]
+
+
+
 [dependencies]
-tokio = { version = "1", features = ["time", "fs"]}
+tokio = { version = "1", features = ["time", "fs"], optional=true}
 [dev-dependencies]
 tokio = { version = "1", features = ["time", "fs", "macros", "rt-multi-thread"]}
 
